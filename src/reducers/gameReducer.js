@@ -1,5 +1,6 @@
 let initialState = { 
   player: "X",
+  winStatus: false,
   board: [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 };
 
@@ -25,11 +26,13 @@ export default (state = initialState, action) => {
           newState.turn += 1;
           newState.player = state.player === "X" ? "O": "X";
         }
+        else {
+          alert("That block has been selected");
+        }
       return newState;
     case "CHECK_CAT":
-      if (state.board.indexOf(" ") < 0) {
+      if (state.board.indexOf(" ") < 0 && state.winStatus === false) {
         setTimeout(() => alert("Cat game! Play again!"), 200);
-        // playTicTacToe(); // restart game
       }
       return newState;
     case "CHECK_WIN":
@@ -37,12 +40,13 @@ export default (state = initialState, action) => {
             let option1 = winningCombinations[i][0];
             let option2 = winningCombinations[i][1];
             let option3 = winningCombinations[i][2];
-            console.log(">>" + state.board[option1] + "=" + state.board[option2] + "=" + state.board[option3] + "<<");
+
             if (
               state.board[option1] &&
               state.board[option1] === state.board[option2] &&
               state.board[option2] === state.board[option3] && state.board[option1] !== " "
             ) {
+              newState.winStatus = true;
               let letter = state.board[option1];
               let blocks = document.querySelectorAll('.block');
 
@@ -50,9 +54,15 @@ export default (state = initialState, action) => {
               blocks[option2].style.color = "green";
               blocks[option3].style.color = "green";
               setTimeout(() => alert(`Game over! ${letter}'s win!`), 200);
-              // setTimeout(() => playTicTacToe(), 500);
             }
           }
+      return newState;
+    case "NEW_GAME":
+      newState = initialState;
+      let blocks = document.querySelectorAll('.block');
+      for(let j = 0; j < 9; j++){
+        blocks[j].style.color = "black";
+      }
       return newState;
     default: 
       return newState;

@@ -12,3 +12,7 @@ export let checkCat = () => {
 export let checkWin = () => {
   store.dispatch({type: "CHECK_WIN"});
 };
+
+export let newGame = () => {
+  store.dispatch({type: "NEW_GAME"});
+};

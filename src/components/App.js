@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import '../styles/App.css';
-import { takeTurn, checkCat, checkWin } from '../actions/gameActions';
+import { takeTurn, checkCat, checkWin, newGame } from '../actions/gameActions';
 
 const style = {
   boxStyle: {
@@ -41,11 +41,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to Tic-Tac-React</h2>
+          <h2>Welcome to Tic-Tac-Toe</h2>
+          <button onClick={() => this.props.newGame()}>New Game</button>
         </div>
-        <br/>
-
         <div className="conatiner">
           <div className="row">
              {squareItems}
@@ -66,7 +64,8 @@ let mapStateToProps = (state, ownProps) => {
 let mapDispatchToProps = () => ({
   takeTurn, 
   checkCat, 
-  checkWin
+  checkWin,
+  newGame
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
