@@ -17,17 +17,21 @@ const style = {
   }
 }
 
+function playGame(index) {
+  takeTurn(index);
+  checkWin();
+  checkCat();
+};
+
 class App extends Component {
   render() {
-
-        console.log("+++++++ ",this.props.board)
-
     let squareItems = this.props.board.map((square, index) => {
       return (
         <div key={index} 
-             className="col-md-3 col-md-offset-1" 
+             className="col-md-3 col-md-offset-1 block" 
              style={style.boxStyle}
-             onClick={() => this.props.takeTurn(index)}
+             /*onClick={() => this.props.takeTurn(index)}*/
+             onClick={() => playGame(index)}
         >
           {square}
         </div>
