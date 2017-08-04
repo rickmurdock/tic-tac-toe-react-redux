@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import logo from '../logo.svg';
 import '../styles/App.css';
 import { takeTurn, checkCat, checkWin, newGame } from '../actions/gameActions';
 
@@ -41,12 +40,16 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome to Tic-Tac-Toe</h2>
-          <button onClick={() => this.props.newGame()}>New Game</button>
+          <h2>Tic-Tac-Toe</h2>
+          <button onClick={() => this.props.newGame()} style={{color:"red", borderRadius:10, padding:7}}>New Game</button>
         </div>
-        <div className="conatiner">
+        <div className="conatiner-fluid">
           <div className="row">
-             {squareItems}
+            <div className="col-md-10 col-md-offset-2">
+              <div>
+                {squareItems}
+              </div>
+            </div>
           </div>
         </div>
       </div>
