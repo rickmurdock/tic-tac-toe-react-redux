@@ -1,4 +1,12 @@
-# Daily-Project: Tic-Tac-Toe React-Redux
+# Tic-Tac-Toe React-Redux
+
+The Iron Yard Daily Project.
+
+---
+
+### View the finished project: http://tictactoereact.surge.sh/
+
+---
 
 This project will require you to build a Tic-Tac-Toe game using React and Redux. This project is intended to challenge you to
 
